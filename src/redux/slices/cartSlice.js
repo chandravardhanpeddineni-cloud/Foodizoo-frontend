@@ -6,7 +6,7 @@
 
 import {createSlice} from "@reduxjs/toolkit"
 
-//Initial 
+
 
 const initialState ={
     cartItems: [],
