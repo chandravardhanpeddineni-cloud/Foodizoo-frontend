@@ -26,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     });
     dispatch(loginSuccess(data.data.user));
   } catch (error) {
-    dispatch(loginFail("login Failed "));
+    dispatch(loginFail(`login Failed ${error}`));
   }
 };
 
