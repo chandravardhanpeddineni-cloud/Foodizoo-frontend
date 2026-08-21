@@ -12,7 +12,9 @@ export const getRestaurants = createAsyncThunk(
     "restaurants/getRestaurants",async(keyword =" ",{rejectWithValue}) =>{
        try{
         //API call
-        const {data} = await api.get(`/v1/eats/stores?keyword=${keyword}`);
+        const {data} = await api.get(`/v1/eats/stores?keyword=${encodeURIComponent(keyword)}`, {
+  withCredentials: true
+});
         console.log("Fetched restaurants",data);
         return {
             restaurants : data.restaurants,
