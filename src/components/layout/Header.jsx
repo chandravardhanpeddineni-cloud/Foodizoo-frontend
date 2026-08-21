@@ -40,6 +40,7 @@ const Header = () => {
               path="/eats/stores/search/:keyword"
               element={<Search />}
             />
+            <Route path="*" element={null} />
           </Routes>
         </div>
 
@@ -94,13 +95,13 @@ const Header = () => {
                 </Link>
               </div>
             </div>
-          ) : (
+          ) : 
              (
               <Link to="/users/login" className="btn ml-4" id="login_btn">
                 Login
               </Link>
             )
-          )}
+          }
         </div>
       </nav>
     </>
