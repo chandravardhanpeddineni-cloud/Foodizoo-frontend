@@ -13,7 +13,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   // Updated slice
-  const { user} = useSelector((state) => state.user);
+  const { user, loading } = useSelector((state) => state.user);
   const {cartItems} = useSelector((state => state.cart))
 
 
@@ -40,7 +40,6 @@ const Header = () => {
               path="/eats/stores/search/:keyword"
               element={<Search />}
             />
-            <Route path="*" element={null} />
           </Routes>
         </div>
 
@@ -95,13 +94,13 @@ const Header = () => {
                 </Link>
               </div>
             </div>
-          ) : 
-             (
+          ) : (
+            !loading && (
               <Link to="/users/login" className="btn ml-4" id="login_btn">
                 Login
               </Link>
             )
-          }
+          )}
         </div>
       </nav>
     </>

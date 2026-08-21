@@ -11,8 +11,6 @@ import {
   updateRequest,
   updateSuccess,
   updateFail,
-  updateReset,
-  clearErrors,
 } from "../slices/userSlice";
 
 // LOGIN
