@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { logout } from "../../redux/actions/userActions";
 
 import { toast } from "react-toastify"; // 
@@ -11,10 +11,14 @@ import "../../App.css";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   // Updated slice
   const { user } = useSelector((state) => state.user);
   const {cartItems} = useSelector((state => state.cart))
+  const showSearch =
+    location.pathname === "/" ||
+    location.pathname.startsWith("/eats/stores/search/");
 
 
   const logoutHandler = () => {
@@ -34,13 +38,7 @@ const Header = () => {
 
         {/* search */}
         <div className="col-12 col-md-6 mt-2 mt-md-0">
-          <Routes>
-            <Route path="/" element={<Search />} />
-            <Route
-              path="/eats/stores/search/:keyword"
-              element={<Search />}
-            />
-          </Routes>
+          {showSearch && <Search />}
         </div>
 
         {/* right side */}

@@ -2,9 +2,11 @@
 
 import axios from "axios";
 import qs from "qs";
-console.log("ENV:", import.meta.env.VITE_API_URL);
+
+const apiBaseUrl = import.meta.env.VITE_API_URL?.replace(/\/+$/, "");
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL + "/api",
+  baseURL: apiBaseUrl ? `${apiBaseUrl}/api` : "/api",
   withCredentials: true,
   paramsSerializer: (params) => qs.stringify(params, { arrayFormat: "repeat" }),
 });
